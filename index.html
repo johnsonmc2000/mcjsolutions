@@ -149,6 +149,52 @@
       color: #555;
       margin-bottom: 20px;
     }
+
+    /* ── Contact Form Fields ── */
+    .contact-form {
+      margin-bottom: 24px;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .form-group label {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #1a3c5e;
+    }
+    .form-group input {
+      padding: 10px 14px;
+      border: 1px solid #ccd8e4;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      color: #212529;
+      background: #f8f9fa;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      font-family: inherit;
+    }
+    .form-group input:focus {
+      outline: none;
+      border-color: #1a3c5e;
+      box-shadow: 0 0 0 3px rgba(26,60,94,0.1);
+      background: #fff;
+    }
+    .form-group input::placeholder {
+      color: #aaa;
+    }
+    @media (max-width: 560px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
     .sms-optin .disclosures {
       background: #f4f8fc;
       border-radius: 4px;
@@ -271,6 +317,30 @@
     <h2>Stay Connected via Text</h2>
     <p class="biz-name"><strong>MCJ Real Estate Services, Inc.</strong> &mdash; DRE License #01398946</p>
 
+    <!-- Contact Form Fields -->
+    <div class="contact-form">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="first-name">First Name <span style="color:#c0392b;">*</span></label>
+          <input type="text" id="first-name" name="first-name" placeholder="Jane" required />
+        </div>
+        <div class="form-group">
+          <label for="last-name">Last Name <span style="color:#c0392b;">*</span></label>
+          <input type="text" id="last-name" name="last-name" placeholder="Smith" required />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="email">Email Address <span style="color:#c0392b;">*</span></label>
+          <input type="email" id="email" name="email" placeholder="jane@example.com" required />
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone Number <span style="color:#c0392b;">*</span></label>
+          <input type="tel" id="phone" name="phone" placeholder="(555) 555-5555" required />
+        </div>
+      </div>
+    </div>
+
     <div class="disclosures">
       <ul>
         <li>Message and data rates may apply</li>
@@ -284,9 +354,7 @@
     <label class="checkbox-label">
       <input type="checkbox" id="sms-consent" name="sms-consent" />
       <span>
-        I agree to receive SMS messages from MCJ Real Estate Services. I understand message and data rates may apply. Reply STOP to cancel.
-        By checking this box, I confirm I have read and agree to the
-        <a href="privacy-policy.html">Privacy Policy</a> and <a href="terms.html">Terms of Service</a>.
+        I agree to receive SMS messages from MCJ Real Estate Services, Inc. regarding real estate services. Message and data rates may apply. Message frequency varies. Reply STOP to cancel, HELP for help. See our <a href="privacy-policy.html">Privacy Policy</a> and <a href="terms.html">Terms of Service</a>.
       </span>
     </label>
   </div>
