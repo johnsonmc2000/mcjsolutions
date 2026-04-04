@@ -378,21 +378,67 @@
 </footer>
 
 <script>
-  document.getElementById('sms-form').addEventListener('submit', function(e) {
+  document.getElementById('sms-form').addEventListener('submit', async function(e) {
     e.preventDefault();
+    var form = this;
     var checkbox = document.getElementById('sms-consent');
     var errorDiv = document.getElementById('sms-error');
     var successDiv = document.getElementById('sms-success');
+    var submitBtn = form.querySelector('button[type="submit"]');
+
+    errorDiv.style.display = 'none';
+    successDiv.style.display = 'none';
+
     if (!checkbox.checked) {
       errorDiv.textContent = 'Please check the box to agree to SMS communications before submitting.';
       errorDiv.style.display = 'block';
-      successDiv.style.display = 'none';
-    } else {
-      successDiv.textContent = 'Thank you! We will be in touch shortly.';
-      successDiv.style.display = 'block';
-      errorDiv.style.display = 'none';
-      this.reset();
+      return;
     }
+
+    // Validate required fields
+    var firstName = document.getElementById('first-name').value.trim();
+    var lastName = document.getElementById('last-name').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var phone = document.getElementById('phone').value.trim();
+
+    if (!firstName || !lastName || !email || !phone) {
+      errorDiv.textContent = 'Please fill in all required fields.';
+      errorDiv.style.display = 'block';
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting...';
+
+    try {
+      var response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          access_key: 'cfd4b483-23ff-4d93-93a8-e518706a9dca',
+          subject: 'New SMS Opt-In — MCJ Real Estate',
+          from_name: firstName + ' ' + lastName,
+          name: firstName + ' ' + lastName,
+          email: email,
+          phone: phone,
+          message: 'SMS opt-in consent given. Phone: ' + phone
+        })
+      });
+      var result = await response.json();
+      if (result.success) {
+        successDiv.textContent = 'Thank you! We will be in touch shortly.';
+        successDiv.style.display = 'block';
+        form.reset();
+      } else {
+        throw new Error('Submission failed');
+      }
+    } catch (err) {
+      errorDiv.textContent = 'Something went wrong. Please email us directly at mark@mcjsolutions.com.';
+      errorDiv.style.display = 'block';
+    }
+
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Submit & Opt In to SMS';
   });
 </script>
 
