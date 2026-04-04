@@ -317,6 +317,7 @@
     <h2>Stay Connected via Text</h2>
     <p class="biz-name"><strong>MCJ Real Estate Services, Inc.</strong> &mdash; DRE License #01398946</p>
 
+    <form id="sms-form" novalidate>
     <!-- Contact Form Fields -->
     <div class="contact-form">
       <div class="form-row">
@@ -352,11 +353,15 @@
     </div>
 
     <label class="checkbox-label">
-      <input type="checkbox" id="sms-consent" name="sms-consent" />
+      <input type="checkbox" id="sms-consent" name="sms-consent" required />
       <span>
         I agree to receive SMS messages from MCJ Real Estate Services, Inc. regarding real estate services. Message and data rates may apply. Message frequency varies. Reply STOP to cancel, HELP for help. See our <a href="privacy-policy.html">Privacy Policy</a> and <a href="terms.html">Terms of Service</a>.
       </span>
     </label>
+    <button type="submit" style="margin-top:20px; background:#1a3c5e; color:#fff; border:none; padding:13px 36px; border-radius:4px; font-size:1rem; font-weight:600; cursor:pointer; width:100%;">Submit &amp; Opt In to SMS</button>
+    <div id="sms-error" style="display:none; color:#c0392b; font-size:0.9rem; margin-top:10px; font-weight:600;"></div>
+    <div id="sms-success" style="display:none; color:#1a6b1a; font-size:0.95rem; margin-top:10px; font-weight:600;"></div>
+    </form>
   </div>
 
 </div>
@@ -368,9 +373,28 @@
 </section>
 
 <footer>
-  <p>&copy; 2024 MCJ Real Estate Services, Inc. &mdash; DRE License #01398946 &mdash; All rights reserved.</p>
+  <p>&copy; 2026 MCJ Real Estate Services, Inc. &mdash; DRE License #01398946 &mdash; All rights reserved.</p>
   <p style="margin-top:6px;"><a href="privacy-policy.html">Privacy Policy</a> &middot; <a href="terms.html">Terms of Service</a></p>
 </footer>
+
+<script>
+  document.getElementById('sms-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var checkbox = document.getElementById('sms-consent');
+    var errorDiv = document.getElementById('sms-error');
+    var successDiv = document.getElementById('sms-success');
+    if (!checkbox.checked) {
+      errorDiv.textContent = 'Please check the box to agree to SMS communications before submitting.';
+      errorDiv.style.display = 'block';
+      successDiv.style.display = 'none';
+    } else {
+      successDiv.textContent = 'Thank you! We will be in touch shortly.';
+      successDiv.style.display = 'block';
+      errorDiv.style.display = 'none';
+      this.reset();
+    }
+  });
+</script>
 
 </body>
 </html>
