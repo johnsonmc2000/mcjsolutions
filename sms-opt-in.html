@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SMS Opt-In | MCJ Real Estate Services, Inc.</title>
+  <meta name="description" content="SMS opt-in page for MCJ Real Estate Services, Inc., a California licensed real estate brokerage, DRE License #01398946." />
+  <style>
+    *, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+    body { font-family:"Segoe UI", Helvetica, Arial, sans-serif; background:#f7f9fc; color:#1f2933; line-height:1.65; }
+    a { color:#164a73; }
+    header { background:#123556; color:#fff; padding:34px 24px 28px; text-align:center; }
+    header h1 { font-size:clamp(1.7rem,4vw,2.35rem); line-height:1.15; margin-bottom:8px; }
+    header p { color:#c8dced; }
+    nav { background:#0c2944; display:flex; flex-wrap:wrap; justify-content:center; gap:10px 24px; padding:12px 18px; }
+    nav a { color:#d7e8f5; text-decoration:none; font-size:.94rem; font-weight:600; }
+    nav a:hover { color:#fff; text-decoration:underline; }
+    main { max-width:960px; margin:0 auto; padding:40px 24px 64px; }
+    .card { background:#fff; border:1px solid #dbe5ee; border-radius:14px; padding:28px; box-shadow:0 2px 10px rgba(16,40,70,.05); margin-bottom:24px; }
+    h2 { color:#123556; font-size:1.55rem; margin-bottom:12px; line-height:1.2; }
+    h3 { color:#123556; font-size:1.08rem; margin:18px 0 8px; }
+    .eyebrow { color:#52708a; text-transform:uppercase; letter-spacing:.08em; font-size:.78rem; font-weight:800; margin-bottom:8px; }
+    .identity { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; margin-top:18px; }
+    .identity div, .notice { background:#f7fbff; border:1px solid #dbe9f4; border-radius:10px; padding:15px; }
+    ul { padding-left:20px; }
+    li { margin-bottom:6px; }
+    .notice { border-left:5px solid #1b5f8d; margin-top:16px; }
+    form { margin-top:20px; }
+    .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .field { display:flex; flex-direction:column; gap:6px; margin-bottom:14px; }
+    label { font-weight:700; color:#123556; font-size:.93rem; }
+    input, select, textarea { width:100%; border:1px solid #c8d6e2; border-radius:8px; padding:11px 12px; font:inherit; background:#fff; color:#1f2933; }
+    textarea { min-height:110px; resize:vertical; }
+    .checkbox-row { display:flex; gap:12px; align-items:flex-start; background:#fff8e9; border:1px solid #efd7a5; border-radius:10px; padding:16px; margin-top:8px; }
+    .checkbox-row input { width:20px; height:20px; margin-top:4px; flex:0 0 auto; accent-color:#123556; }
+    .checkbox-row label { color:#1f2933; font-weight:600; line-height:1.55; }
+    .fine-print { font-size:.92rem; color:#435464; margin-top:12px; }
+    button { width:100%; border:0; border-radius:8px; background:#123556; color:white; padding:13px 18px; font:inherit; font-weight:800; cursor:pointer; margin-top:16px; }
+    footer { background:#0c2944; color:#bed2e2; text-align:center; padding:26px 20px; font-size:.9rem; }
+    footer a { color:#d7e8f5; }
+    @media (max-width:720px){ .identity,.form-grid{ grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+<header>
+  <h1>SMS Opt-In for MCJ Real Estate Services, Inc.</h1>
+  <p>California licensed real estate brokerage · DRE License #01398946</p>
+</header>
+<nav aria-label="Primary navigation">
+  <a href="/">Home</a>
+  <a href="/sms-opt-in">SMS Opt-In</a>
+  <a href="/privacy-policy">Privacy Policy</a>
+  <a href="/terms-of-service">Terms of Service</a>
+</nav>
+<main>
+  <section class="card">
+    <p class="eyebrow">Business and messaging use case</p>
+    <h2>Who we are and why we may text you</h2>
+    <p><strong>MCJ Real Estate Services, Inc.</strong> is a California licensed real estate brokerage. We provide buyer representation, seller representation, real estate inquiry support, requested property updates, appointment and showing coordination, and service notices related to real estate services.</p>
+    <div class="identity">
+      <div><strong>Business:</strong><br />MCJ Real Estate Services, Inc.</div>
+      <div><strong>License:</strong><br />California DRE License #01398946</div>
+      <div><strong>Contact email:</strong><br /><a href="mailto:mark@mcjsolutions.com">mark@mcjsolutions.com</a></div>
+      <div><strong>SMS recipients:</strong><br />Customers and clients who submit this form and check the SMS consent box.</div>
+    </div>
+    <h3>SMS messages we send</h3>
+    <ul>
+      <li>Responses to real estate inquiries you submit to MCJ Real Estate Services, Inc.</li>
+      <li>Requested property updates related to your buying, selling, or property search needs.</li>
+      <li>Appointment confirmations and showing coordination.</li>
+      <li>Service notices related to an active real estate request or transaction.</li>
+    </ul>
+    <div class="notice">
+      <p><strong>Required SMS disclosures:</strong> Message frequency varies. Message and data rates may apply. Reply STOP to opt out. Reply HELP for help. Consent is not required to receive services. Mobile opt-in data will not be shared, sold, or provided to third parties or affiliates for marketing or promotional purposes. See <a href="/privacy-policy">Privacy Policy</a> and <a href="/terms-of-service">Terms of Service</a>.</p>
+    </div>
+  </section>
+
+  <section class="card" id="sms-opt-in-form">
+    <p class="eyebrow">Public SMS consent form</p>
+    <h2>Request real estate information and optionally opt in to SMS</h2>
+    <p>The SMS consent checkbox below is not prechecked. SMS consent is optional and is not required to receive real estate brokerage services from MCJ Real Estate Services, Inc.</p>
+    <form id="mcj-sms-opt-in-form" novalidate>
+      <div class="form-grid">
+        <div class="field"><label for="first-name">First Name *</label><input id="first-name" name="first_name" autocomplete="given-name" required /></div>
+        <div class="field"><label for="last-name">Last Name *</label><input id="last-name" name="last_name" autocomplete="family-name" required /></div>
+        <div class="field"><label for="email">Email Address *</label><input id="email" name="email" type="email" autocomplete="email" required /></div>
+        <div class="field"><label for="phone">Mobile Phone Number *</label><input id="phone" name="phone" type="tel" autocomplete="tel" required /></div>
+      </div>
+      <div class="field"><label for="interest">Reason for contacting MCJ</label><select id="interest" name="interest"><option>Real estate inquiry</option><option>Requested property updates</option><option>Appointment or showing coordination</option><option>Buyer representation</option><option>Seller representation</option><option>Service notice related to real estate services</option></select></div>
+      <div class="field"><label for="message">Message</label><textarea id="message" name="message" placeholder="Tell us what information, property update, appointment, or service support you are requesting."></textarea></div>
+      <div class="checkbox-row">
+        <input type="checkbox" id="sms-consent" name="sms_consent" required />
+        <label for="sms-consent">I agree to receive SMS messages from MCJ Real Estate Services, Inc. regarding real estate inquiries, requested property updates, appointment confirmations, and service notices. Message frequency varies. Message and data rates may apply. Reply STOP to opt out. Reply HELP for help. Consent is not required to receive services. See <a href="/privacy-policy">Privacy Policy</a> and <a href="/terms-of-service">Terms of Service</a>.</label>
+      </div>
+      <p class="fine-print">SMS consent is collected only through this unchecked opt-in checkbox. No SMS messages are sent without this explicit consent.</p>
+      <button type="submit">Submit Request and SMS Consent</button>
+      <p id="form-status" class="fine-print" role="status"></p>
+    </form>
+  </section>
+</main>
+<footer>
+  <p>&copy; 2026 MCJ Real Estate Services, Inc. · California DRE License #01398946 · <a href="mailto:mark@mcjsolutions.com">mark@mcjsolutions.com</a></p>
+  <p><a href="/">Home</a> · <a href="/privacy-policy">Privacy Policy</a> · <a href="/terms-of-service">Terms of Service</a></p>
+</footer>
+<script>
+  document.getElementById('mcj-sms-opt-in-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    var status = document.getElementById('form-status');
+    var consent = document.getElementById('sms-consent');
+    var required = ['first-name','last-name','email','phone'];
+    for (var i=0;i<required.length;i++) { if (!document.getElementById(required[i]).value.trim()) { status.textContent='Please complete all required fields.'; return; } }
+    if (!consent.checked) { status.textContent='Please check the SMS consent box if you want to opt in to SMS messages. SMS consent is optional and not required to receive services.'; return; }
+    status.textContent='Thank you. If this were submitted on the live service, MCJ would receive your request and SMS consent record. You may also email mark@mcjsolutions.com directly.';
+  });
+</script>
+</body>
+</html>
