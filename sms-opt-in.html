@@ -84,7 +84,7 @@
         <div class="field"><label for="first-name">First Name *</label><input id="first-name" name="first_name" autocomplete="given-name" required /></div>
         <div class="field"><label for="last-name">Last Name *</label><input id="last-name" name="last_name" autocomplete="family-name" required /></div>
         <div class="field"><label for="email">Email Address *</label><input id="email" name="email" type="email" autocomplete="email" required /></div>
-        <div class="field"><label for="phone">Mobile Phone Number *</label><input id="phone" name="phone" type="tel" autocomplete="tel" required /></div>
+        <div class="field"><label for="phone">Mobile Phone Number (optional unless opting into SMS)</label><input id="phone" name="phone" type="tel" autocomplete="tel" /></div>
       </div>
       <div class="field"><label for="interest">Reason for contacting MCJ</label><select id="interest" name="interest"><option>Real estate inquiry</option><option>Requested property updates</option><option>Appointment or showing coordination</option><option>Buyer representation</option><option>Seller representation</option><option>Service notice related to real estate services</option></select></div>
       <div class="field"><label for="message">Message</label><textarea id="message" name="message" placeholder="Tell us what information, property update, appointment, or service support you are requesting."></textarea></div>
@@ -92,8 +92,8 @@
         <input type="checkbox" id="sms-consent" name="sms_consent" />
         <label for="sms-consent">I agree to receive SMS messages from MCJ Real Estate Services, Inc. regarding real estate inquiries, requested property updates, appointment confirmations, and service notices. Message frequency varies. Message and data rates may apply. Reply STOP to opt out. Reply HELP for help. Consent is not required to receive services. See <a href="/privacy-policy">Privacy Policy</a> and <a href="/terms-of-service">Terms of Service</a>.</label>
       </div>
-      <p class="fine-print">SMS consent is collected only through this unchecked opt-in checkbox. No SMS messages are sent without this explicit consent.</p>
-      <button type="submit">Submit Request and SMS Consent</button>
+      <p class="fine-print">SMS consent is collected only if you provide a mobile number and check this unchecked opt-in checkbox. You may submit the form without SMS consent.</p>
+      <button type="submit">Submit Request</button>
       <p id="form-status" class="fine-print" role="status"></p>
     </form>
   </section>
@@ -107,8 +107,9 @@
     e.preventDefault();
     var status = document.getElementById('form-status');
     var consent = document.getElementById('sms-consent');
-    var required = ['first-name','last-name','email','phone'];
+    var required = ['first-name','last-name','email'];
     for (var i=0;i<required.length;i++) { if (!document.getElementById(required[i]).value.trim()) { status.textContent='Please complete all required fields.'; return; } }
+    if (consent.checked && !document.getElementById('phone').value.trim()) { status.textContent='Please provide a mobile phone number to opt in to SMS messages, or leave SMS unchecked to submit without texts.'; return; }
     if (consent.checked) {
       status.textContent='Thank you. If this were submitted on the live service, MCJ would receive your request and SMS consent record. You may also email mark@mcjsolutions.com directly.';
     } else {
