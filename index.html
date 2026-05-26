@@ -127,7 +127,7 @@
       <div class="field"><label for="interest">Real Estate Interest</label><select id="interest" name="interest"><option>Buying a property</option><option>Selling a property</option><option>Requested property updates</option><option>Appointment or showing coordination</option><option>Other real estate inquiry</option></select></div>
       <div class="field"><label for="message">How can we help?</label><textarea id="message" name="message" placeholder="Tell us about your real estate inquiry or requested property update."></textarea></div>
       <div class="checkbox-row">
-        <input type="checkbox" id="sms-consent" name="sms_consent" required />
+        <input type="checkbox" id="sms-consent" name="sms_consent" />
         <label for="sms-consent">I agree to receive SMS messages from MCJ Real Estate Services, Inc. regarding real estate inquiries, requested property updates, appointment confirmations, and service notices. Message frequency varies. Message and data rates may apply. Reply STOP to opt out. Reply HELP for help. Consent is not required to receive services. See <a href="/privacy-policy">Privacy Policy</a> and <a href="/terms-of-service">Terms of Service</a>.</label>
       </div>
       <p class="fine-print">By submitting this form, you may be contacted by email or phone regarding your inquiry. SMS messages are sent only if you check the SMS consent box above.</p>
@@ -147,8 +147,11 @@
     var consent = document.getElementById('sms-consent');
     var required = ['first-name','last-name','email','phone'];
     for (var i=0;i<required.length;i++) { if (!document.getElementById(required[i]).value.trim()) { status.textContent='Please complete all required fields.'; return; } }
-    if (!consent.checked) { status.textContent='Please check the SMS consent box if you want to opt in to SMS messages. SMS consent is optional and not required to receive services.'; return; }
-    status.textContent='Thank you. If this were submitted on the live service, MCJ would receive your request and SMS consent record. You may also email mark@mcjsolutions.com directly.';
+    if (consent.checked) {
+      status.textContent='Thank you. If this were submitted on the live service, MCJ would receive your request and SMS consent record. You may also email mark@mcjsolutions.com directly.';
+    } else {
+      status.textContent='Thank you. If this were submitted on the live service, MCJ would receive your request without SMS consent. You may also email mark@mcjsolutions.com directly.';
+    }
   });
 </script>
 </body>
