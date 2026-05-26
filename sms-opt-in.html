@@ -110,11 +110,17 @@
     var required = ['first-name','last-name','email'];
     for (var i=0;i<required.length;i++) { if (!document.getElementById(required[i]).value.trim()) { status.textContent='Please complete all required fields.'; return; } }
     if (consent.checked && !document.getElementById('phone').value.trim()) { status.textContent='Please provide a mobile phone number to opt in to SMS messages, or leave SMS unchecked to submit without texts.'; return; }
-    if (consent.checked) {
-      status.textContent='Thank you. If this were submitted on the live service, MCJ would receive your request and SMS consent record. You may also email mark@mcjsolutions.com directly.';
-    } else {
-      status.textContent='Thank you. If this were submitted on the live service, MCJ would receive your request without SMS consent. You may also email mark@mcjsolutions.com directly.';
-    }
+    var body = [
+      'First Name: ' + document.getElementById('first-name').value.trim(),
+      'Last Name: ' + document.getElementById('last-name').value.trim(),
+      'Email: ' + document.getElementById('email').value.trim(),
+      'Mobile Phone: ' + (document.getElementById('phone').value.trim() || 'Not provided'),
+      'Reason for Contacting MCJ: ' + document.getElementById('interest').value,
+      'Message: ' + (document.getElementById('message').value.trim() || 'Not provided'),
+      'SMS Consent: ' + (consent.checked ? 'Yes' : 'No')
+    ].join('\n');
+    status.textContent='Opening your email app with this request addressed to mark@mcjsolutions.com.';
+    window.location.href='mailto:mark@mcjsolutions.com?subject=' + encodeURIComponent('MCJ website inquiry') + '&body=' + encodeURIComponent(body);
   });
 </script>
 </body>
